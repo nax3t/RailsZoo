@@ -9,9 +9,12 @@ class AnimalsController < ApplicationController
 
   def create
   	@animal = Animal.new(animal_params)
-  	@animal.save
-
-  	redirect_to @animal
+  	if @animal.save
+  		flash[:success] = "You created a new #{@animal.species} named #{@animal.name}!"
+  		redirect_to @animal
+  	else
+  		render 'new'
+  	end
   end
 
   def show
@@ -35,7 +38,7 @@ class AnimalsController < ApplicationController
   def destroy
   @animal = Animal.find(params[:id])
   @animal.destroy
- 
+ 	flash[:danger] = "You deleted #{@animal.name}!"
   redirect_to animals_path
 	end
 
