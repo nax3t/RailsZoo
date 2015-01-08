@@ -6,7 +6,10 @@
 <img src="<%= @animal.img %>" width="150"/>
 
 <p>
-	<%= link_to 'Edit', edit_animal_path %>
+	<%= link_to 'Edit', edit_animal_path %> | 
+	<%= link_to 'Delete', animal_path(@animal),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
 </p>
 <p>
 	<%= link_to 'Back', animals_path %>
