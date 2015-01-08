@@ -1,2 +1,22 @@
-<h1>Animals#new</h1>
-<p>Find me in app/views/animals/new.html.erb</p>
+<h1>New Animal</h1>
+
+<%= form_for :animal, url: animals_path do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :species %><br>
+    <%= f.text_field :species %>
+  </p>
+ 
+  <p>
+    <%= f.label 'Image url' %><br>
+    <%= f.text_field :img %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

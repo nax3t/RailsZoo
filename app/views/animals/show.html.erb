@@ -1,2 +1,6 @@
-<h1>Animals#show</h1>
-<p>Find me in app/views/animals/show.html.erb</p>
+<h1><%= @animal.name %></h1>
+<p>
+	<strong>Species:</strong>
+	<%= @animal.species %>
+</p>
+<img src="<%= @animal.img %>" width="150"/>
