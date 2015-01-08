@@ -1,7 +1,7 @@
 <h1>Animals List</h1>
 
 <% @animals.each do |animal| %>
-	<li><%= animal.name %> | <%= link_to 'Show', animal_path(animal) %></li>
+	<li><%= link_to animal.name, animal_path(animal) %></li>
 <% end %> 
 
 <p>
