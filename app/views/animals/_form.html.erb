@@ -1,0 +1,35 @@
+<%= form_for @animal do |f| %>
+
+  <% if @animal.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@animal.errors.count, "error") %> prohibited
+        this animal from being saved:
+      </h2>
+      <ul>
+        <% @animal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :species %><br>
+    <%= f.text_field :species %>
+  </p>
+ 
+  <p>
+    <%= f.label 'Image url' %><br>
+    <%= f.text_field :img %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
