@@ -1,4 +1,5 @@
 class AnimalsController < ApplicationController
+  before_action :animal_find, only: [:show, :edit, :update, :destroy]
   def index
   	@animals = Animal.all
   end
@@ -18,16 +19,12 @@ class AnimalsController < ApplicationController
   end
 
   def show
-  	@animal = Animal.find(params[:id])
   end
 
   def edit
-  	@animal = Animal.find(params[:id])
   end
 
   def update
-  	@animal = Animal.find(params[:id])
- 
   	if @animal.update(animal_params)
     	redirect_to @animal
   	else
@@ -36,7 +33,6 @@ class AnimalsController < ApplicationController
   end
 
   def destroy
-  @animal = Animal.find(params[:id])
   @animal.destroy
  	flash[:danger] = "You deleted #{@animal.name}!"
   redirect_to animals_path
@@ -47,4 +43,7 @@ private
 		params.require(:animal).permit(:name, :species, :img, :bio)
 	end
 
+  def animal_find
+    @animal = Animal.find(params[:id])
+  end
 end
